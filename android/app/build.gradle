@@ -35,17 +35,17 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.maven.madad.serviceman"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 35
+    ndkVersion = "27.0.12077973"
 
-    compileOptions {
+ compileOptions {
         coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+           jvmTarget = '17'
     }
     defaultConfig {
         applicationId "com.maven.madad.serviceman"
