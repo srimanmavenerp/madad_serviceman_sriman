@@ -1,0 +1,2 @@
+C:/maven/madad/Service man app-n/Service man app/android/app/.cxx/RelWithDebInfo/6z5a6y4i/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/maven/madad/Service man app-n/Service man app/android/app/.cxx/RelWithDebInfo/6z5a6y4i/armeabi-v7a/CMakeFiles/rebuild_cache.dir

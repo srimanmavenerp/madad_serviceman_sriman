@@ -1,0 +1,191 @@
+{
+  "project_info": {
+    "project_number": "199624523333",
+    "firebase_url": "https://madad-4b373-default-rtdb.firebaseio.com",
+    "project_id": "madad-4b373",
+    "storage_bucket": "madad-4b373.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199624523333:android:c0323614dff0e3f11fad2c",
+        "android_client_info": {
+          "package_name": "com.maven.madad.provider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr3J9I6f7YSC0x8TvtNcl48O87mb8CZ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "199624523333-0stv5ehusk1ieqdtofi8602geqj52lp0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sixamtech.demandium.serviceman"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199624523333:android:76dd3d65fdcd8fc11fad2c",
+        "android_client_info": {
+          "package_name": "com.maven.madad.serviceman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr3J9I6f7YSC0x8TvtNcl48O87mb8CZ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "199624523333-0stv5ehusk1ieqdtofi8602geqj52lp0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sixamtech.demandium.serviceman"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199624523333:android:ddb34e4b29c249821fad2c",
+        "android_client_info": {
+          "package_name": "com.maven.madaduser.User"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr3J9I6f7YSC0x8TvtNcl48O87mb8CZ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "199624523333-0stv5ehusk1ieqdtofi8602geqj52lp0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sixamtech.demandium.serviceman"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199624523333:android:340b31aed69a90011fad2c",
+        "android_client_info": {
+          "package_name": "com.sixamtech.demandium.serviceman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr3J9I6f7YSC0x8TvtNcl48O87mb8CZ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "199624523333-0stv5ehusk1ieqdtofi8602geqj52lp0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sixamtech.demandium.serviceman"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199624523333:android:d560c552614203961fad2c",
+        "android_client_info": {
+          "package_name": "com.sixamtech.demandium.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr3J9I6f7YSC0x8TvtNcl48O87mb8CZ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199624523333-5lmde2o9mgeua42g67i6l7mnsv97n60k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "199624523333-0stv5ehusk1ieqdtofi8602geqj52lp0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sixamtech.demandium.serviceman"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

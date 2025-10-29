@@ -1,0 +1,1 @@
+C:\maven\madad\Service man app-n\Service man app\build\app\intermediates\cxx\Debug\104k1z45\obj\arm64-v8a

@@ -1,0 +1,2 @@
+C:/Users/saifu/Service man app-n/Service man app/android/app/.cxx/RelWithDebInfo/192p1j2g/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/saifu/Service man app-n/Service man app/android/app/.cxx/RelWithDebInfo/192p1j2g/x86_64/CMakeFiles/rebuild_cache.dir
