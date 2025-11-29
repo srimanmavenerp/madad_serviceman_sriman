@@ -8,11 +8,7 @@ class BookingDetailsModel {
   String? message;
   BookingContent? bookingContent;
 
-  BookingDetailsModel({
-    this.responseCode,
-    this.message,
-    this.bookingContent,
-  });
+  BookingDetailsModel({this.responseCode, this.message, this.bookingContent});
   BookingDetailsModel.fromJson(Map<String, dynamic> json) {
     responseCode = json['response_code'];
     message = json['message'];
@@ -41,22 +37,26 @@ class BookingContent {
   int? providerServicemanCanEditBooking;
   Vehicle? vehicle;
 
-  BookingContent(
-      {this.bookingDetailsContent,
-      this.vehicle,
-      this.providerServicemanCanCancelBooking,
-      this.providerServicemanCanEditBooking});
+  BookingContent({
+    this.bookingDetailsContent,
+    this.vehicle,
+    this.providerServicemanCanCancelBooking,
+    this.providerServicemanCanEditBooking,
+  });
 
   BookingContent.fromJson(Map<String, dynamic> json) {
     bookingDetailsContent = json['booking'] != null
         ? BookingDetailsContent.fromJson(json['booking'])
         : null;
-    providerServicemanCanCancelBooking =
-        int.tryParse(json['provider_serviceman_can_cancel_booking'].toString());
-    providerServicemanCanEditBooking =
-        int.tryParse(json['provider_serviceman_can_edit_booking'].toString());
-    vehicle =
-        json['vehicle'] != null ? Vehicle.fromJson(json['vehicle']) : null;
+    providerServicemanCanCancelBooking = int.tryParse(
+      json['provider_serviceman_can_cancel_booking'].toString(),
+    );
+    providerServicemanCanEditBooking = int.tryParse(
+      json['provider_serviceman_can_edit_booking'].toString(),
+    );
+    vehicle = json['vehicle'] != null
+        ? Vehicle.fromJson(json['vehicle'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -81,26 +81,21 @@ class ServiceData {
   String? serviceName;
   double? serviceAmount;
 
-  ServiceData({
-    this.serviceName,
-    this.serviceAmount,
-  });
+  ServiceData({this.serviceName, this.serviceAmount});
 
   // Convert from JSON
   factory ServiceData.fromJson(Map<String, dynamic> json) {
     return ServiceData(
       serviceName: json['service_name'] ?? 'Unknown Service', // Default if null
-      serviceAmount: double.tryParse(json['service_amount'].toString()) ??
+      serviceAmount:
+          double.tryParse(json['service_amount'].toString()) ??
           0.0, // Default to 0.0 if parsing fails
     );
   }
 
   // Convert to JSON
   Map<String, dynamic> toJson() {
-    return {
-      'service_name': serviceName,
-      'service_amount': serviceAmount,
-    };
+    return {'service_name': serviceName, 'service_amount': serviceAmount};
   }
 
   @override
@@ -154,9 +149,14 @@ class BookingDetailsContent {
   String? cusRev;
   String? slot;
   List<CalendarEvents>? calendarEvents;
-  Vehicle? vehicle;
+  Vehicle? vehicle; // --- NEW FIELDS ---
+  bool? internalBookings;
+
+  List<String>? interiorSchedules;
 
   BookingDetailsContent({
+    this.internalBookings,
+    this.interiorSchedules,
     this.id,
     this.readableId,
     this.customerId,
@@ -204,6 +204,10 @@ class BookingDetailsContent {
   });
 
   BookingDetailsContent.fromJson(Map<String, dynamic> json) {
+    internalBookings = json['internalBookingStatus']?['internal_bookings'];
+
+    interiorSchedules = json['interiorSchedules']?.cast<String>();
+
     id = json['id'];
     readableId = json['readable_id'].toString();
     customerId = json['customer_id'];
@@ -213,11 +217,13 @@ class BookingDetailsContent {
     isPaid = json['is_paid'];
     paymentMethod = json['payment_method'];
     transactionId = json['transaction_id'];
-    totalBookingAmount =
-        double.tryParse(json['total_booking_amount'].toString());
+    totalBookingAmount = double.tryParse(
+      json['total_booking_amount'].toString(),
+    );
     totalTaxAmount = double.tryParse(json['total_tax_amount'].toString());
-    totalDiscountAmount =
-        double.tryParse(json['total_discount_amount'].toString());
+    totalDiscountAmount = double.tryParse(
+      json['total_discount_amount'].toString(),
+    );
     serviceSchedule = json['service_schedule'];
     serviceAddressId = json['service_address_id'];
     createdAt = json['created_at'];
@@ -228,8 +234,9 @@ class BookingDetailsContent {
     subCategoryId = json['sub_category_id'];
     servicemanId = json['serviceman_id'];
 
-    vehicle =
-        json['vehicle'] != null ? Vehicle.fromJson(json['vehicle']) : null;
+    vehicle = json['vehicle'] != null
+        ? Vehicle.fromJson(json['vehicle'])
+        : null;
 
     if (json['detail'] != null) {
       details = <ItemService>[];
@@ -244,8 +251,9 @@ class BookingDetailsContent {
         // Decode the string into a list of maps
         List<dynamic> decodedList = jsonDecode(json['service_data']);
         // Now convert the list of maps into a list of ServiceData objects
-        serviceData =
-            decodedList.map((item) => ServiceData.fromJson(item)).toList();
+        serviceData = decodedList
+            .map((item) => ServiceData.fromJson(item))
+            .toList();
       } else if (json['service_data'] is List) {
         // If it's already a list, just map it
         serviceData = (json['service_data'] as List)
@@ -282,13 +290,14 @@ class BookingDetailsContent {
     customer = json['customer'] != null
         ? DetailsCustomerModel.fromJson(json['customer'])
         : null;
-    provider =
-        json['provider'] != null ? Provider.fromJson(json['provider']) : null;
+    provider = json['provider'] != null
+        ? Provider.fromJson(json['provider'])
+        : null;
     serviceman = json['serviceman'] != null
         ? Serviceman.fromJson(json['serviceman'])
         : null;
-    totalCampaignDiscountAmount =
-        json['total_campaign_discount_amount'].toString();
+    totalCampaignDiscountAmount = json['total_campaign_discount_amount']
+        .toString();
     totalCouponDiscountAmount = json['total_coupon_discount_amount'].toString();
     photoEvidence = json["evidence_photos"] != null
         ? json["evidence_photos"].cast<String>()
@@ -299,8 +308,9 @@ class BookingDetailsContent {
     extraFee = double.tryParse(json["extra_fee"].toString());
     additionalCharge = double.tryParse(json["additional_charge"].toString());
     isGuest = int.tryParse(json["is_guest"].toString());
-    totalReferralDiscountAmount =
-        double.tryParse(json['total_referral_discount_amount'].toString());
+    totalReferralDiscountAmount = double.tryParse(
+      json['total_referral_discount_amount'].toString(),
+    );
     subBooking = json['booking'] != null
         ? BookingDetailsContent.fromJson(json['booking'])
         : null;
@@ -318,6 +328,7 @@ class BookingDetailsContent {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['interiorSchedules'] = interiorSchedules;
     data['id'] = id;
     data['readable_id'] = readableId;
     data['customer_id'] = customerId;
@@ -350,12 +361,14 @@ class BookingDetailsContent {
       data['service_data'] = details!.map((v) => v.toJson()).toList();
     }
     if (scheduleHistories != null) {
-      data['schedule_histories'] =
-          scheduleHistories!.map((v) => v.toJson()).toList();
+      data['schedule_histories'] = scheduleHistories!
+          .map((v) => v.toJson())
+          .toList();
     }
     if (statusHistories != null) {
-      data['status_histories'] =
-          statusHistories!.map((v) => v.toJson()).toList();
+      data['status_histories'] = statusHistories!
+          .map((v) => v.toJson())
+          .toList();
     }
     if (serviceAddress != null) {
       data['service_address'] = serviceAddress!.toJson();
@@ -489,13 +502,15 @@ class ItemService {
     totalCost = double.tryParse(json['total_cost'].toString());
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    campaignDiscountAmount =
-        double.tryParse(json['campaign_discount_amount'].toString());
+    campaignDiscountAmount = double.tryParse(
+      json['campaign_discount_amount'].toString(),
+    );
     service = json['service'] != null
         ? BookingDetailsService.fromJson(json['service'])
         : null;
-    overallCouponDiscountAmount =
-        double.tryParse(json['overall_coupon_discount_amount'].toString());
+    overallCouponDiscountAmount = double.tryParse(
+      json['overall_coupon_discount_amount'].toString(),
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -537,23 +552,24 @@ class BookingDetailsService {
   String? createdAt;
   String? updatedAt;
 
-  BookingDetailsService(
-      {this.id,
-      this.name,
-      this.shortDescription,
-      this.description,
-      this.coverImage,
-      this.thumbnail,
-      this.thumbnailFullPath,
-      this.categoryId,
-      this.subCategoryId,
-      this.tax,
-      this.orderCount,
-      this.isActive,
-      this.ratingCount,
-      this.avgRating,
-      this.createdAt,
-      this.updatedAt});
+  BookingDetailsService({
+    this.id,
+    this.name,
+    this.shortDescription,
+    this.description,
+    this.coverImage,
+    this.thumbnail,
+    this.thumbnailFullPath,
+    this.categoryId,
+    this.subCategoryId,
+    this.tax,
+    this.orderCount,
+    this.isActive,
+    this.ratingCount,
+    this.avgRating,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   BookingDetailsService.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -605,15 +621,16 @@ class StatusHistories {
   String? updatedAt;
   User? user;
 
-  StatusHistories(
-      {this.id,
-      this.bookingId,
-      this.changedBy,
-      this.bookingStatus,
-      this.bookingSchedule,
-      this.createdAt,
-      this.updatedAt,
-      this.user});
+  StatusHistories({
+    this.id,
+    this.bookingId,
+    this.changedBy,
+    this.bookingStatus,
+    this.bookingSchedule,
+    this.createdAt,
+    this.updatedAt,
+    this.user,
+  });
 
   StatusHistories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -659,22 +676,23 @@ class ServiceAddress {
   String? contactPersonNumber;
   String? addressLabel;
 
-  ServiceAddress(
-      {this.id,
-      this.userId,
-      this.lat,
-      this.lon,
-      this.city,
-      this.street,
-      this.zipCode,
-      this.country,
-      this.address,
-      this.createdAt,
-      this.updatedAt,
-      this.addressType,
-      this.contactPersonName,
-      this.contactPersonNumber,
-      this.addressLabel});
+  ServiceAddress({
+    this.id,
+    this.userId,
+    this.lat,
+    this.lon,
+    this.city,
+    this.street,
+    this.zipCode,
+    this.country,
+    this.address,
+    this.createdAt,
+    this.updatedAt,
+    this.addressType,
+    this.contactPersonName,
+    this.contactPersonNumber,
+    this.addressLabel,
+  });
 
   ServiceAddress.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -741,31 +759,32 @@ class DetailsCustomerModel {
   String? createdAt;
   String? updatedAt;
 
-  DetailsCustomerModel(
-      {this.id,
-      this.roleId,
-      this.firstName,
-      this.lastName,
-      this.email,
-      this.phone,
-      this.identificationNumber,
-      this.identificationType,
-      this.identificationImage,
-      this.dateOfBirth,
-      this.gender,
-      this.profileImage,
-      this.profileImageFullPath,
-      this.fcmToken,
-      this.isPhoneVerified,
-      this.isEmailVerified,
-      this.phoneVerifiedAt,
-      this.emailVerifiedAt,
-      this.isActive,
-      this.userType,
-      this.rememberToken,
-      this.deletedAt,
-      this.createdAt,
-      this.updatedAt});
+  DetailsCustomerModel({
+    this.id,
+    this.roleId,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.phone,
+    this.identificationNumber,
+    this.identificationType,
+    this.identificationImage,
+    this.dateOfBirth,
+    this.gender,
+    this.profileImage,
+    this.profileImageFullPath,
+    this.fcmToken,
+    this.isPhoneVerified,
+    this.isEmailVerified,
+    this.phoneVerifiedAt,
+    this.emailVerifiedAt,
+    this.isActive,
+    this.userType,
+    this.rememberToken,
+    this.deletedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   DetailsCustomerModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -845,28 +864,29 @@ class Provider {
   int? isApproved;
   String? zoneId;
 
-  Provider(
-      {this.id,
-      this.userId,
-      this.companyName,
-      this.companyPhone,
-      this.companyAddress,
-      this.companyEmail,
-      this.logo,
-      this.logoFullPath,
-      this.contactPersonName,
-      this.contactPersonPhone,
-      this.contactPersonEmail,
-      this.orderCount,
-      this.serviceManCount,
-      this.serviceCapacityPerDay,
-      this.commissionStatus,
-      this.commissionPercentage,
-      this.isActive,
-      this.createdAt,
-      this.updatedAt,
-      this.isApproved,
-      this.zoneId});
+  Provider({
+    this.id,
+    this.userId,
+    this.companyName,
+    this.companyPhone,
+    this.companyAddress,
+    this.companyEmail,
+    this.logo,
+    this.logoFullPath,
+    this.contactPersonName,
+    this.contactPersonPhone,
+    this.contactPersonEmail,
+    this.orderCount,
+    this.serviceManCount,
+    this.serviceCapacityPerDay,
+    this.commissionStatus,
+    this.commissionPercentage,
+    this.isActive,
+    this.createdAt,
+    this.updatedAt,
+    this.isApproved,
+    this.zoneId,
+  });
 
   Provider.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -948,14 +968,15 @@ class ScheduleHistories {
   String? updatedAt;
   User? user;
 
-  ScheduleHistories(
-      {this.id,
-      this.bookingId,
-      this.changedBy,
-      this.schedule,
-      this.createdAt,
-      this.updatedAt,
-      this.user});
+  ScheduleHistories({
+    this.id,
+    this.bookingId,
+    this.changedBy,
+    this.schedule,
+    this.createdAt,
+    this.updatedAt,
+    this.user,
+  });
 
   ScheduleHistories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -989,14 +1010,15 @@ class PartialPayment {
   String? createdAt;
   String? updatedAt;
 
-  PartialPayment(
-      {this.id,
-      this.bookingId,
-      this.paidWith,
-      this.paidAmount,
-      this.dueAmount,
-      this.createdAt,
-      this.updatedAt});
+  PartialPayment({
+    this.id,
+    this.bookingId,
+    this.paidWith,
+    this.paidAmount,
+    this.dueAmount,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   PartialPayment.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -1068,8 +1090,8 @@ class CalendarEvents {
       updatedAt: json['updated_at']?.toString(),
       beforeImagesUploadedAt: json['before_images_uploaded_at']?.toString(),
       afterImagesUploadedAt: json['after_images_uploaded_at']?.toString(),
-      cancelledImagesUploadedAt:
-          json['cancelled_images_uploaded_at']?.toString(),
+      cancelledImagesUploadedAt: json['cancelled_images_uploaded_at']
+          ?.toString(),
     );
   }
 
